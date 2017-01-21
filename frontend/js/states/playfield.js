@@ -44,12 +44,14 @@ PlayfieldState.prototype.create = function() {
     this.ships = new Ships(this);
 
     this.ships.add(new Ship(this, 100, 100, this.cursors));
-    this.ships.add(new Ship(this, 200, 100, this.p2cursors));
+    this.ships.add(new Ship(this, 200, 400, this.p2cursors));
 
     console.log(this.ships);
 };
 
 PlayfieldState.prototype.update = function() {
+    this.game.physics.arcade.collide(this.ships);
+
 };
 
 PlayfieldState.prototype.fireBullet = function() {

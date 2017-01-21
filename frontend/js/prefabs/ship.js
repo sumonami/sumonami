@@ -13,8 +13,10 @@ var Ship = function(state, x, y, controls) {
 
     //physics
     state.game.physics.enable(this, Phaser.Physics.ARCADE);
+    this.enableBody = true;
     this.body.drag.set(100);
     this.body.maxVelocity.set(200);
+    this.body.collideWorldBounds=
 
     // TODO: move to Ship.addWaves?
     // Add before the ship so they're under the sprite
