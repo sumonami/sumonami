@@ -1,5 +1,6 @@
-
 'use strict';
+
+var CONFIG = require('../config');
 
 var Ship = function(state, x, y, controls) {
     // instantiate object
@@ -31,7 +32,7 @@ var Ship = function(state, x, y, controls) {
     this.bullets = this.game.add.group();
     this.bullets.enableBody = true;
     this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
-    this.bullets.createMultiple(40, 'bullet');
+    this.bullets.createMultiple(40, 'dog-bullet');
     this.bullets.setAll('anchor.x', 0.5);
     this.bullets.setAll('anchor.y', 0.5);
 
@@ -55,11 +56,14 @@ Ship.prototype.update = function() {
     else
     { this.body.angularVelocity = 0; }
 
-    if (this.controls.fire1.isDown)
-    { this.fireBullet(); }
+    this.controls.fire1.onDown.add(this.fireBullet, this);
+    this.controls.fire2.onDown.add(this.fireWave, this);
 
-    if (this.controls.fire2.isDown)
-    { this.fireWave(); }
+    // Dog spin
+    this.bullets.setAll('angle', 10, false, false, 1);
+    // Make first spin faster for the lulz
+    var wee = this.bullets.getFirstAlive();
+    if (wee) wee.angle += 10;
 
     this.waves.forEachExists(this.scaleSprite, this, 0.02);
 };

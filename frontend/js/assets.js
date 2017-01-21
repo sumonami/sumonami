@@ -19,6 +19,7 @@ var assets = {
     images: [
         ['ship', 'images/battleship_small.png'],
         ['bullet', 'images/bullet1.png'],
+        ['dog-bullet', 'images/dog-bullet.png'],
         ['space', 'images/deepblue.png'],
         ['wave', 'images/blue_circle.png']
     ],
