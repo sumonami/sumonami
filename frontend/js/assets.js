@@ -21,6 +21,9 @@ var assets = {
         ['bullet', 'images/bullet1.png'],
         ['space', 'images/deepblue.png']
     ],
+    spritesheets: [
+        ['water', 'spritesheets/water.png', 256, 256]
+    ],
     // Audio files to load
     sounds: [
     ]
@@ -40,6 +43,11 @@ function preloadAssets(game, fileLoadedCallback) {
     console.log('Preloading images...');
     assets.images.forEach(function(item) {
         game.load.image(item[0], item[1]);
+    });
+
+    console.log('Preloading spritesheets...');
+    assets.spritesheets.forEach(function(item) {
+        game.load.spritesheet(item[0], item[1], item[2], item[3]);
     });
 
     console.log('Preloading sounds...');

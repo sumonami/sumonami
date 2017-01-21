@@ -38,8 +38,10 @@ PlayfieldState.prototype.create = function() {
     //  We need arcade physics
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    //  A spacey background
-    this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'space');
+    //  Watery backdrop
+    var water = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'water');
+    var ripple = water.animations.add('ripple');
+    water.animations.play('ripple', 6, true);
 
     this.cursors = new Object();
     this.cursors.forward = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
