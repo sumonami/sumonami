@@ -24,6 +24,7 @@ var Ship = function(state, x, y, controls) {
     this.waves.physicsBodyType = Phaser.Physics.ARCADE;
     this.waves.createMultiple(3, 'wave');
     this.waves.setAll('anchor.x', 0.5);
+    this.waves.setAll('anchor.y', 0.5);
 
     // add to canvas and log
     state.game.add.existing(this);

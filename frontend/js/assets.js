@@ -21,7 +21,7 @@ var assets = {
         ['bullet', 'images/bullet1.png'],
         ['dog-bullet', 'images/dog-bullet.png'],
         ['space', 'images/deepblue.png'],
-        ['wave', 'images/blue_circle.png']
+        ['wave', 'images/ship_wave.png']
     ],
     spritesheets: [
         ['water', 'spritesheets/water.png', 256, 256]
