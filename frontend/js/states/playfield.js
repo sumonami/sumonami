@@ -33,10 +33,16 @@ PlayfieldState.prototype.create = function() {
     this.cursors.right = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
     this.cursors.fire1 = this.game.input.keyboard.addKey(Phaser.Keyboard.Q);
 
+    this.p2cursors = new Object();
+    this.p2cursors.forward = this.game.input.keyboard.addKey(Phaser.Keyboard.I);
+    this.p2cursors.left = this.game.input.keyboard.addKey(Phaser.Keyboard.J);
+    this.p2cursors.right = this.game.input.keyboard.addKey(Phaser.Keyboard.L);
+    this.p2cursors.fire1 = this.game.input.keyboard.addKey(Phaser.Keyboard.U);
 
     this.ships = new Ships(this);
 
     this.ships.add(new Ship(this, 100, 100, this.cursors));
+    this.ships.add(new Ship(this, 200, 100, this.p2cursors));
 
     console.log(this.ships);
 };
