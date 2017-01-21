@@ -113,11 +113,3 @@ Ship.prototype.scaleSprite = function (sprite, increment){
 
 
 module.exports = Ship;
-/*
-sprite.cursors = new Object();
-sprite.cursors.forward = game.input.keyboard.addKey(Phaser.Keyboard.W);
-sprite.cursors.left = game.input.keyboard.addKey(Phaser.Keyboard.A);
-sprite.cursors.right = game.input.keyboard.addKey(Phaser.Keyboard.D);
-
-
-module.exports = Ship;

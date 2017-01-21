@@ -39,6 +39,7 @@ PlayfieldState.prototype.create = function() {
     this.p2cursors.left = this.game.input.keyboard.addKey(Phaser.Keyboard.J);
     this.p2cursors.right = this.game.input.keyboard.addKey(Phaser.Keyboard.L);
     this.p2cursors.fire1 = this.game.input.keyboard.addKey(Phaser.Keyboard.U);
+    this.p2cursors.fire2 = this.game.input.keyboard.addKey(Phaser.Keyboard.O);
 
     this.ships = new Ships(this);
 
