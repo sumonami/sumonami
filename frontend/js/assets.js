@@ -17,11 +17,11 @@ var assets = {
     // images are standard image files.
     // Format is [key, path]
     images: [
-        ['ship', 'images/battleship_small.png'],
+        ['ship', 'images/player1.png'],
         ['bullet', 'images/bullet1.png'],
         ['dog-bullet', 'images/dog-bullet.png'],
         ['space', 'images/deepblue.png'],
-        ['wave', 'images/ship_wave.png']
+        ['wave', 'images/blue_circle.png']
     ],
     spritesheets: [
         ['water', 'spritesheets/water.png', 256, 256]

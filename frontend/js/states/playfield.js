@@ -46,29 +46,15 @@ PlayfieldState.prototype.create = function() {
     this.ships = new Ships(this);
 
     this.ships.add(new Ship(this, 100, 100, this.cursors));
-    this.ships.add(new Ship(this, 200, 400, this.p2cursors));
+    this.ships.add(new Ship(this, 200, 100, this.p2cursors));
+
+    this.game.physics.enable(this.ships, Phaser.Physics.ARCADE);
 
     console.log(this.ships);
 };
 
 PlayfieldState.prototype.update = function() {
     this.game.physics.arcade.collide(this.ships);
-
-};
-
-PlayfieldState.prototype.fireBullet = function() {
-    if (this.game.time.now > this.bulletTime) {
-        var bullet = this.bullets.getFirstExists(false);
-
-        if (bullet)
-        {
-            bullet.reset(this.sprite.body.x + 16, this.sprite.body.y + 16);
-            bullet.lifespan = 2000;
-            bullet.rotation = this.sprite.rotation;
-            this.game.physics.arcade.velocityFromRotation(this.sprite.rotation, 400, bullet.body.velocity);
-            this.bulletTime = this.game.time.now + 50;
-        }
-    }
 };
 
 module.exports = PlayfieldState;

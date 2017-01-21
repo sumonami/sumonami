@@ -52,19 +52,18 @@ Ship.prototype = Object.create(Phaser.Sprite.prototype);
 Ship.prototype.constructor = Ship;
 
 Ship.prototype.update = function() {
+    this.speed = 10;
     if (this.controls.forward.isDown)
-    { this.game.physics.arcade.accelerationFromRotation(this.rotation, this.acceleration_increment, this.body.acceleration); }
+    { this.body.velocity.y -= this.speed; }
     else if (this.controls.backward.isDown)
-    { this.game.physics.arcade.accelerationFromRotation(this.rotation, -this.acceleration_increment, this.body.acceleration); }
+    { this.body.velocity.y += this.speed; }
     else
     { this.body.acceleration.set(0); }
 
     if (this.controls.left.isDown)
-    { this.body.angularVelocity = -30; }
+    { this.body.velocity.x -= this.speed; }
     else if (this.controls.right.isDown)
-    { this.body.angularVelocity = 30; }
-    else
-    { this.body.angularVelocity = 0; }
+    { this.body.velocity.x += this.speed; }
 
     this.controls.fire1.onDown.add(this.fireBullet, this);
     this.controls.fire2.onDown.add(this.fireWave, this);
@@ -76,6 +75,7 @@ Ship.prototype.update = function() {
     if (wee) wee.angle += 10;
 
     this.waves.forEachExists(this.scaleSprite, this, 0.02);
+    //this.game.debug.body(this);
 };
 
 Ship.prototype.fireBullet = function () {
@@ -102,8 +102,6 @@ Ship.prototype.fireWave = function() {
 
         if (wave)
         {
-            wave.reset(this.body.x + 16, this.body.y + 16);
-            wave.lifespan = 2000;
             wave.rotation = this.rotation;
             this.game.physics.arcade.velocityFromRotation(0, 0, 0);
             this.waveTime = this.game.time.now + 50;
@@ -119,6 +117,9 @@ Ship.prototype.fireWave = function() {
         }
     }
 };
+
+Ship.prototype.render = function (){
+}
 
 Ship.prototype.scaleSprite = function (sprite, increment){
         sprite.scale.setTo(sprite.scale.x + increment);
