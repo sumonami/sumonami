@@ -1,6 +1,7 @@
 'use strict';
 
 var CONFIG = require('../config');
+var _common = require('./_common');
 var Ship = require('../prefabs/ship');
 var Ships = require('../prefabs/ships');
 
@@ -10,6 +11,7 @@ var PlayfieldState = function() {
 };
 
 PlayfieldState.prototype.preload = function() {
+    _common.setGameScale(this.game);
 };
 
 PlayfieldState.prototype.create = function() {
