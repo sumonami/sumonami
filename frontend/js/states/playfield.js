@@ -45,6 +45,7 @@ PlayfieldState.prototype.create = function() {
     this.cursors.forward = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
     this.cursors.left = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
     this.cursors.right = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
+    this.cursors.fire1 = this.game.input.keyboard.addKey(Phaser.Keyboard.Q);
 
 
     this.dogShip = new Ship(this, 100, 100, this.cursors);
