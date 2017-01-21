@@ -15,6 +15,15 @@ var Ship = function(state, x, y, controls) {
     this.body.drag.set(100);
     this.body.maxVelocity.set(200);
 
+    // TODO: move to Ship.addWaves?
+    // Add before the ship so they're under the sprite
+    this.waveTime = 0;
+    this.waves = this.game.add.group();
+    this.waves.enableBody = true;
+    this.waves.physicsBodyType = Phaser.Physics.ARCADE;
+    this.waves.createMultiple(3, 'wave');
+    this.waves.setAll('anchor.x', 0.5);
+
     // add to canvas and log
     state.game.add.existing(this);
 
@@ -34,22 +43,25 @@ Ship.prototype = Object.create(Phaser.Sprite.prototype);
 Ship.prototype.constructor = Ship;
 
 Ship.prototype.update = function() {
+    if (this.controls.forward.isDown)
+    { this.game.physics.arcade.accelerationFromRotation(this.rotation, 20, this.body.acceleration); }
+    else
+    { this.body.acceleration.set(0); }
 
-    if (this.controls.forward.isDown) {
-        this.game.physics.arcade.accelerationFromRotation(this.rotation, 200, this.body.acceleration);
-    }
+    if (this.controls.left.isDown)
+    { this.body.angularVelocity = -30; }
+    else if (this.controls.right.isDown)
+    { this.body.angularVelocity = 30; }
+    else
+    { this.body.angularVelocity = 0; }
 
-    else this.body.acceleration.set(0);
+    if (this.controls.fire1.isDown)
+    { this.fireBullet(); }
 
-    if (this.controls.left.isDown) {
-        this.body.angularVelocity = -300;
-    }
-    else if (this.controls.right.isDown) {
-        this.body.angularVelocity = 300;
-    }
-    else this.body.angularVelocity = 0;
+    if (this.controls.fire2.isDown)
+    { this.fireWave(); }
 
-    if (this.controls.fire1.isDown) this.fireBullet();
+    this.waves.forEachExists(this.scaleSprite, this, 0.02);
 };
 
 Ship.prototype.fireBullet = function () {
@@ -68,6 +80,44 @@ Ship.prototype.fireBullet = function () {
         }
     }
 
-}
+};
+
+Ship.prototype.fireWave = function() {
+    if (this.game.time.now > this.waveTime) {
+        var wave = this.waves.getFirstExists(false);
+
+        if (wave)
+        {
+            wave.reset(this.body.x + 16, this.body.y + 16);
+            wave.lifespan = 2000;
+            wave.rotation = this.rotation;
+            this.game.physics.arcade.velocityFromRotation(0, 0, 0);
+            this.waveTime = this.game.time.now + 50;
+
+            wave.reset(this.body.x + this.body.width/2, this.body.y + this.body.height/2);
+            wave.scale.setTo(0.1);
+            wave.alpha = 1;
+            wave.lifespan = 2000;
+            wave.rotation = this.rotation;
+            this.game.physics.arcade.velocityFromRotation(0, 0, 0);
+            //The number is the delay between shots
+            this.waveTime = this.game.time.now + 200;
+        }
+    }
+};
+
+Ship.prototype.scaleSprite = function (sprite, increment){
+        sprite.scale.setTo(sprite.scale.x + increment);
+        sprite.alpha -= 0.01;
+    };
+
+
+module.exports = Ship;
+/*
+sprite.cursors = new Object();
+sprite.cursors.forward = game.input.keyboard.addKey(Phaser.Keyboard.W);
+sprite.cursors.left = game.input.keyboard.addKey(Phaser.Keyboard.A);
+sprite.cursors.right = game.input.keyboard.addKey(Phaser.Keyboard.D);
+
 
 module.exports = Ship;

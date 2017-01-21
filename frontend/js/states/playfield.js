@@ -32,6 +32,7 @@ PlayfieldState.prototype.create = function() {
     this.cursors.left = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
     this.cursors.right = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
     this.cursors.fire1 = this.game.input.keyboard.addKey(Phaser.Keyboard.Q);
+    this.cursors.fire2 = this.game.input.keyboard.addKey(Phaser.Keyboard.E);
 
     this.p2cursors = new Object();
     this.p2cursors.forward = this.game.input.keyboard.addKey(Phaser.Keyboard.I);
