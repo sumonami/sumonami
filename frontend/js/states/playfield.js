@@ -2,6 +2,7 @@
 
 var CONFIG = require('../config');
 var Ship = require('../prefabs/ship');
+var Ships = require('../prefabs/ships');
 
 
 
@@ -50,7 +51,11 @@ PlayfieldState.prototype.create = function() {
     this.cursors.fire1 = this.game.input.keyboard.addKey(Phaser.Keyboard.Q);
 
 
-    this.dogShip = new Ship(this, 100, 100, this.cursors);
+    this.ships = new Ships(this);
+
+    this.ships.add(new Ship(this, 100, 100, this.cursors));
+
+    console.log(this.ships);
    /*
     // Our ships bullets
     this.bullets = this.game.add.group();
