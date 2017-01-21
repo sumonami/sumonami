@@ -114,8 +114,21 @@ Ship.prototype.fireWave = function() {
             this.game.physics.arcade.velocityFromRotation(0, 0, 0);
             //The number is the delay between shots
             this.waveTime = this.game.time.now + 200;
+            console.log(this.parent);
+
+            this.parent.forEachExists(this.repelShip, this);
+            }
         }
-    }
+};
+
+Ship.prototype.repelShip = function (ship) {
+    var dist = this.game.physics.arcade.distanceBetween(ship, this);
+    var ang = this.game.physics.arcade.angleBetween(ship, this);
+    ship.body.velocity.x += 1;
+    ship.body.velocity.y += 1;
+    ship.game.physics.arcade.velocityFromRotation(ang, -200, ship.body.velocity);
+    console.log(dist);
+    console.log(ang);
 };
 
 Ship.prototype.render = function (){
