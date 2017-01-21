@@ -29,6 +29,7 @@ PlayfieldState.prototype.create = function() {
 
     this.cursors = new Object();
     this.cursors.forward = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
+    this.cursors.backward = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
     this.cursors.left = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
     this.cursors.right = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
     this.cursors.fire1 = this.game.input.keyboard.addKey(Phaser.Keyboard.Q);
@@ -36,6 +37,7 @@ PlayfieldState.prototype.create = function() {
 
     this.p2cursors = new Object();
     this.p2cursors.forward = this.game.input.keyboard.addKey(Phaser.Keyboard.I);
+    this.p2cursors.backward = this.game.input.keyboard.addKey(Phaser.Keyboard.K);
     this.p2cursors.left = this.game.input.keyboard.addKey(Phaser.Keyboard.J);
     this.p2cursors.right = this.game.input.keyboard.addKey(Phaser.Keyboard.L);
     this.p2cursors.fire1 = this.game.input.keyboard.addKey(Phaser.Keyboard.U);

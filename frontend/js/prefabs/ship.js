@@ -15,8 +15,13 @@ var Ship = function(state, x, y, controls) {
     state.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.enableBody = true;
     this.body.drag.set(100);
-    this.body.maxVelocity.set(200);
-    this.body.collideWorldBounds=
+    this.body.maxVelocity.set(800);
+    this.body.collideWorldBounds=true;
+    this.body.bounce.y=0.2;
+    this.body.bounce.x=0.2;
+
+    // Rate of acceleration on keypress, don't confuse with this.body.acceleration!
+    this.acceleration_increment=40;
 
     // TODO: move to Ship.addWaves?
     // Add before the ship so they're under the sprite
@@ -48,7 +53,9 @@ Ship.prototype.constructor = Ship;
 
 Ship.prototype.update = function() {
     if (this.controls.forward.isDown)
-    { this.game.physics.arcade.accelerationFromRotation(this.rotation, 20, this.body.acceleration); }
+    { this.game.physics.arcade.accelerationFromRotation(this.rotation, this.acceleration_increment, this.body.acceleration); }
+    else if (this.controls.backward.isDown)
+    { this.game.physics.arcade.accelerationFromRotation(this.rotation, -this.acceleration_increment, this.body.acceleration); }
     else
     { this.body.acceleration.set(0); }
 
