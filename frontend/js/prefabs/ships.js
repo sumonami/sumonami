@@ -3,7 +3,6 @@
 
 var Ships = function (state) {
     Phaser.Group.call(this, state.game);
-    console.log(this);
 };
 
 //Documentation for Phaser's (2.6.2) group:: phaser.io/docs/2.6.2/Phaser.Group.html

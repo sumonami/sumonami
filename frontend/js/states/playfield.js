@@ -52,7 +52,6 @@ PlayfieldState.prototype.create = function() {
 
     this.game.physics.enable(this.ships, Phaser.Physics.ARCADE);
 
-    console.log(this.ships);
 };
 
 PlayfieldState.prototype.update = function() {

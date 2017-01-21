@@ -19,6 +19,9 @@ var Ship = function(state, x, y, controls) {
     this.body.collideWorldBounds=true;
     this.body.bounce.y=0.2;
     this.body.bounce.x=0.2;
+    this.repel_scaling_factor=0.5;
+    this.repel_max_range=100;
+    this.repel_initial_vel=100;
 
     // Rate of acceleration on keypress, don't confuse with this.body.acceleration!
     this.acceleration_increment=40;
@@ -44,7 +47,6 @@ var Ship = function(state, x, y, controls) {
     this.bullets.setAll('anchor.x', 0.5);
     this.bullets.setAll('anchor.y', 0.5);
 
-    console.log(this);
 };
 
 Ship.prototype = Object.create(Phaser.Sprite.prototype);
@@ -114,21 +116,27 @@ Ship.prototype.fireWave = function() {
             this.game.physics.arcade.velocityFromRotation(0, 0, 0);
             //The number is the delay between shots
             this.waveTime = this.game.time.now + 200;
-            console.log(this.parent);
 
             this.parent.forEachExists(this.repelShip, this);
-            }
         }
+    }
 };
 
 Ship.prototype.repelShip = function (ship) {
     var dist = this.game.physics.arcade.distanceBetween(ship, this);
     var ang = this.game.physics.arcade.angleBetween(ship, this);
-    ship.body.velocity.x += 1;
-    ship.body.velocity.y += 1;
-    ship.game.physics.arcade.velocityFromRotation(ang, -200, ship.body.velocity);
-    console.log(dist);
-    console.log(ang);
+
+    if (dist < this.repel_max_range)
+    {
+        var scaling_factor = ( (this.repel_max_range - dist) / this.repel_max_range);
+        console.log("dist:"+dist+", factor:"+scaling_factor+", scaled:"+scaled_velocity);
+
+        var scaled_velocity = (-1 * this.repel_initial_vel * scaling_factor); // scale down
+        ship.game.physics.arcade.velocityFromRotation(ang, scaled_velocity, ship.body.velocity);
+    }
+    else {
+        console.log("out of range!")
+    }
 };
 
 Ship.prototype.render = function (){
