@@ -12,8 +12,7 @@ Ships.prototype = Object.create(Phaser.Group.prototype);
 // prefab initialization and construction
 Ships.prototype.constructor = Ships;
 
-
-  // prefab specific frame update code
+// Update needed, called automatically by phaser as it's a child of the state.
 Ships.prototype.update = function() {
     for (var i = 0, len = this.children.length; i < len; i++) {
         this.children[i].update();
