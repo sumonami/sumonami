@@ -13,8 +13,14 @@ Ships.prototype.constructor = Ships;
 
 // Update needed, called automatically by phaser as it's a child of the state.
 Ships.prototype.update = function() {
-    for (var i = 0, len = this.children.length; i < len; i++) {
-        this.children[i].update();
+    if (this.countLiving() == 1 ) {
+        console.log("There can only be one!!");
+    }
+    else {
+
+        for (var i = 0, len = this.children.length; i < len; i++) {
+            this.children[i].update();
+        }
     }
 };
 

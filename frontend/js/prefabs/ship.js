@@ -16,7 +16,7 @@ var Ship = function(state, x, y, controls) {
     this.enableBody = true;
     this.body.drag.set(100);
     this.body.maxVelocity.set(800);
-    this.body.collideWorldBounds=true;
+    // this.body.collideWorldBounds=true;
     // this.body.bounce.y=0.2;
     // this.body.bounce.x=0.2;
     this.repel_scaling_factor=0.8;
@@ -46,6 +46,8 @@ var Ship = function(state, x, y, controls) {
     this.bullets.createMultiple(40, 'dog-bullet');
     this.bullets.setAll('anchor.x', 0.5);
     this.bullets.setAll('anchor.y', 0.5);
+    this.checkWorldBounds = true;
+    this.outOfBoundsKill = true;
 
 };
 
@@ -77,47 +79,48 @@ Ship.prototype.update = function() {
     if (wee) wee.angle += 10;
 
     this.waves.forEachExists(this.scaleSprite, this, 0.02);
-    //this.game.debug.body(this);
 };
 
 Ship.prototype.fireBullet = function () {
-
-    if (this.game.time.now > this.bulletTime)
-    {
-        this.bullet = this.bullets.getFirstExists(false);
-
-        if (this.bullet)
+    if (this.alive) {
+        if (this.game.time.now > this.bulletTime)
         {
-            this.bullet.reset(this.body.x + 16, this.body.y + 16);
-            this.bullet.lifespan = 2000;
-            this.bullet.rotation = this.rotation;
-            this.game.physics.arcade.velocityFromRotation(this.rotation, 400, this.bullet.body.velocity);
-            this.bulletTime = this.game.time.now + 50;
+            this.bullet = this.bullets.getFirstExists(false);
+
+            if (this.bullet)
+            {
+                this.bullet.reset(this.body.x + 16, this.body.y + 16);
+                this.bullet.lifespan = 2000;
+                this.bullet.rotation = this.rotation;
+                this.game.physics.arcade.velocityFromRotation(this.rotation, 400, this.bullet.body.velocity);
+                this.bulletTime = this.game.time.now + 50;
+            }
         }
     }
-
 };
 
 Ship.prototype.fireWave = function() {
-    if (this.game.time.now > this.waveTime) {
-        var wave = this.waves.getFirstExists(false);
+    if (this.alive) {
+        if (this.game.time.now > this.waveTime) {
+            var wave = this.waves.getFirstExists(false);
 
-        if (wave)
-        {
-            wave.rotation = this.rotation;
-            this.game.physics.arcade.velocityFromRotation(0, 0, 0);
-            this.waveTime = this.game.time.now + 50;
+            if (wave)
+            {
+                wave.rotation = this.rotation;
+                this.game.physics.arcade.velocityFromRotation(0, 0, 0);
+                this.waveTime = this.game.time.now + 50;
 
-            wave.reset(this.body.x + this.body.width/2, this.body.y + this.body.height/2);
-            wave.scale.setTo(0.1);
-            wave.alpha = 1;
-            wave.lifespan = 2000;
-            wave.rotation = this.rotation;
-            this.game.physics.arcade.velocityFromRotation(0, 0, 0);
-            //The number is the delay between shots
-            this.waveTime = this.game.time.now + 200;
+                wave.reset(this.body.x + this.body.width/2, this.body.y + this.body.height/2);
+                wave.scale.setTo(0.1);
+                wave.alpha = 1;
+                wave.lifespan = 2000;
+                wave.rotation = this.rotation;
+                this.game.physics.arcade.velocityFromRotation(0, 0, 0);
+                //The number is the delay between shots
+                this.waveTime = this.game.time.now + 200;
 
-            this.parent.forEachExists(this.repelShip, this);
+                this.parent.forEachExists(this.repelShip, this);
+            }
         }
     }
 };
