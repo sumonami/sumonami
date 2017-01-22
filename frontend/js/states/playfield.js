@@ -48,7 +48,6 @@ PlayfieldState.prototype.endRound= function() {
             this.curScores["player"+i]["wins"] += 1;
         }
     }
-    console.log(this);
     this.game.state.start("EndState", true, false, this.numPlayers, this.curScores);
 
 };

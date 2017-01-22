@@ -7,6 +7,7 @@ var Ship = function(state, playerinfo) {
     var y = playerinfo.initLoc[1];
     var controls = playerinfo.controls;
     var image = playerinfo.image;
+    this.state = state;
 
     // instantiate object
     Phaser.Sprite.call(this, state.game, x, y, image);
@@ -112,6 +113,7 @@ Ship.prototype.fireBullet = function () {
                 this.bullet.angle = this.angle + 90;
                 this.game.physics.arcade.velocityFromAngle(this.bullet.angle, 400, this.bullet.body.velocity);
                 this.bulletTime = this.game.time.now + 50;
+                this.state.curScores[this.key]["sausages"] += 1;
             }
         }
     }
