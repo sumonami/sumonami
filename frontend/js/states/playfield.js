@@ -73,6 +73,7 @@ PlayfieldState.prototype.createPlayers = function() {
     var players = {
         player1: {
             initLoc: [350, 400],
+            sprite: 'player1',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.W),
                 backward: state.game.input.keyboard.addKey(Phaser.Keyboard.S),
@@ -85,6 +86,7 @@ PlayfieldState.prototype.createPlayers = function() {
         },
         player2: {
             initLoc: [550, 400],
+            sprite: 'player2',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.I),
                 backward: state.game.input.keyboard.addKey(Phaser.Keyboard.K),
@@ -97,6 +99,7 @@ PlayfieldState.prototype.createPlayers = function() {
         },
         player3: {
             initLoc: [750, 400],
+            sprite: 'player3',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.T),
                 backward: state.game.input.keyboard.addKey(Phaser.Keyboard.G),
@@ -109,6 +112,7 @@ PlayfieldState.prototype.createPlayers = function() {
         },
         player4: {
             initLoc: [950, 400],
+            sprite: 'player4',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.UP),
                 backward: state.game.input.keyboard.addKey(Phaser.Keyboard.DOWN),
