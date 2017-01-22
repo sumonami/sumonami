@@ -85,7 +85,7 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player1'
         },
         player2: {
-            initLoc: [550, 200],
+            initLoc: [750, 200],
             sprite: 'player2',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.SIX),
@@ -98,7 +98,7 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player2'
         },
         player3: {
-            initLoc: [750, 200],
+            initLoc: [350, 600],
             sprite: 'player3',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.S),
@@ -111,7 +111,7 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player3'
         },
         player4: {
-            initLoc: [950, 200],
+            initLoc: [750, 600],
             sprite: 'player4',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.H),
@@ -124,7 +124,7 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player4'
         },
         player5: {
-            initLoc: [350, 600],
+            initLoc: [550, 200],
             sprite: 'player5',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.FOUR),
@@ -137,7 +137,7 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player5'
         },
         player6: {
-            initLoc: [550, 600],
+            initLoc: [950, 200],
             sprite: 'player6',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT),
@@ -150,7 +150,7 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player6'
         },
         player7: {
-            initLoc: [750, 600],
+            initLoc: [550, 600],
             sprite: 'player7',
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.F),
