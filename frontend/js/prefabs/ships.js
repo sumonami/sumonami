@@ -15,6 +15,8 @@ Ships.prototype.constructor = Ships;
 Ships.prototype.update = function() {
     if (this.countLiving() == 1 ) {
         console.log("There can only be one!!");
+        this.game.state.start("EndState", true, false);
+
     }
     else {
 
