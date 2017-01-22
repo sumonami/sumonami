@@ -8,7 +8,7 @@ var _common = require('./_common');
 
 var EndState = function() {};
 
-EndState.prototype.init = function(scores, numPlayers) {
+EndState.prototype.init = function(numPlayers, scores) {
     console.log("END INIT");
     this.numPlayers = numPlayers;
     this.scores = scores;
@@ -27,7 +27,7 @@ EndState.prototype.new_round = function() {
 
 EndState.prototype.restart = function(state, numPlayers) {
 
-    this.state.start("title", true, true );
+    this.state.start("TitleState", true, false );
 
 };
 

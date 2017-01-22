@@ -41,14 +41,14 @@ PlayfieldState.prototype.create = function(game) {
 
 PlayfieldState.prototype.endRound= function() {
     console.log("Round over!");
-    for (var i = 0; i < this.ships.children.length; i++) {
-        var checkShip = this.ships.children[i];
+    for (var i = 1; i <= this.ships.children.length; i++) {
+        var checkShip = this.ships.children[(i - 1)];
         if (checkShip.alive) {
             console.log("player "+ i + " won!");
             this.curScores["player"+i]["wins"] += 1;
         }
     }
-
+    console.log(this);
     this.game.state.start("EndState", true, false, this.numPlayers, this.curScores);
 
 };
