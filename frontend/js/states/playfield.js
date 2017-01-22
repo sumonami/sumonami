@@ -28,6 +28,7 @@ PlayfieldState.prototype.init = function(numPlayers, curScores) {
     console.log("PLAY FIELD INIT");
     this.numPlayers = numPlayers;
     this.curScores = curScores;
+    this.roundEnded = false;
     _common.setGameScale(this.game);
 };
 
