@@ -118,8 +118,8 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
                 backward:"Z",
                 left:"A",
                 right:"X",
-                fire1:"F3",
-                fire2:"F4"
+                fire1:"SHIFT",
+                fire2:"Ctrl"
             },
             initLoc: [350, 600],
             sprite: 'player3',
@@ -139,8 +139,8 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
                 backward:"B",
                 left:"G",
                 right:"N",
-                fire1:"-",
-                fire2:"+"
+                fire1:"_",
+                fire2:"="
             },
             initLoc: [750, 600],
             sprite: 'player4',
@@ -223,8 +223,8 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
                 backward:"M",
                 left:"J",
                 right:",",
-                fire1:"(",
-                fire2:")"
+                fire1:"{",
+                fire2:"}"
             },
             initLoc: [950, 600],
             sprite: 'player8',
