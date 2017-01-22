@@ -25,14 +25,14 @@ TitleState.prototype.create = function() {
 
     for (var i = 0; i < 100; i++) {
         //await sleep(2000);
-        this.text.body.x = i;
+        //this.text.body.x = i;
     }
 
-}
+};
 
 TitleState.prototype.startGame = function () {
     console.log("starting!");
     this.state.start("PlayField");
-}
+};
 
 module.exports = TitleState;
