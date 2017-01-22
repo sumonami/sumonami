@@ -33,12 +33,20 @@ EndState.prototype.restart = function(state, numPlayers) {
 
 EndState.prototype.create = function() {
     this.bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
-    this.text = this.game.add.sprite(0, 0, 'titleText');
-    this.text.anchor.set(0.5);
-    this.text.x = this.game.width / 2;
-    this.text.y = this.game.height / 2;
-    this.subtext = this.game.add.text(0, 0, "GAME OVAH! Again? (y/n)", CONFIG.font.bigStyle);
+    // this.text = this.game.add.sprite(0, 0, 'titleText');
+    // this.text.anchor.set(0.5);
+    // this.text.x = this.game.width / 2;
+    // this.text.y = this.game.height / 2;
+    console.log("END CREATE");
+    console.log(this.scores);
+    console.log(this.scores["player1"]);
+    var printerText = "";
+    for (var i = 1; i <= this.numPlayers; i++) {
+        printerText = printerText.concat("Player"+i+":  WINS: "+this.scores["player"+i]["wins"]+" SAUSAGES: "+this.scores["player"+i]["sausages"]+"\n");
+    }
 
+    this.scoreText = this.game.add.text(0, 0, printerText, CONFIG.font.bigStyle);
+    this.subtext = this.game.add.text(0, 0, "GAME OVAH! Again? (y/n)", CONFIG.font.bigStyle);
     this.subtext.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
     this.subtext.setTextBounds(0,0,this.game.width,(this.game.height-40));
 
