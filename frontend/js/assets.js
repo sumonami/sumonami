@@ -21,8 +21,8 @@ var assets = {
         ['bullet', 'images/bullet1.png'],
         ['dog-bullet', 'images/dog-bullet.png'],
         ['space', 'images/deepblue.png'],
-        ['wave', 'images/blue_circle.png']
-        ['titleText', 'images/titleText.png']
+        ['wave', 'images/blue_circle.png'],
+        ['titleText', 'images/titleText.png'],
         ['titleBackground', 'images/titleBackground.png']
     ],
     spritesheets: [

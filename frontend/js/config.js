@@ -11,8 +11,8 @@ var CONFIG = {
     // Pixel size of the Phaser canvas.
     // (Canvas itself is scaled to viewport)
     gameSize: {
-        width: 640,
-        height: 480
+        width: 1365,
+        height: 768
     },
 
     assetsPath: "/assets/",
