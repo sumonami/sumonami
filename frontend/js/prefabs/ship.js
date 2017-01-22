@@ -14,6 +14,19 @@ var Ship = function(state, playerinfo) {
     // constants
     this.x = x;
     this.y = y;
+    var helptext = (this.key + "\n"
+                    + playerinfo.control_names.forward + " "
+                    + playerinfo.control_names.backward + " "
+                    + playerinfo.control_names.left + " "
+                    + playerinfo.control_names.right + "\n"
+                    + playerinfo.control_names.fire1 + " "
+                    + playerinfo.control_names.fire2);
+
+    console.log(helptext);
+    this.helptext = this.game.add.text(x,y,helptext, CONFIG.font.controlStyle);
+    this.game.add.tween(this.helptext).to({ alpha: 0.0  }, 6000, Phaser.Easing.Linear.In).start();
+    console.log(this);
+
     this.controls = controls;
     this.anchor.set(0.5);
 

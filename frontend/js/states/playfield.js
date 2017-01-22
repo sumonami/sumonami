@@ -71,6 +71,14 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
     var state = this;
     var players = {
         player1: {
+            control_names: {
+                forward: "2",
+                backward:"Q",
+                left:"1",
+                right:"W",
+                fire1:"F1",
+                fire2:"F2"
+            },
             initLoc: [350, 200],
             sprite: 'player1',
             controls: {
@@ -84,6 +92,14 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player1'
         },
         player2: {
+            control_names: {
+                forward:"6",
+                backward:"T",
+                left:"5",
+                right:"Y",
+                fire1:"9",
+                fire2:"0"
+            },
             initLoc: [750, 200],
             sprite: 'player2',
             controls: {
@@ -97,6 +113,14 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player2'
         },
         player3: {
+            control_names: {
+                forward:"S",
+                backward:"Z",
+                left:"A",
+                right:"X",
+                fire1:"F3",
+                fire2:"F4"
+            },
             initLoc: [350, 600],
             sprite: 'player3',
             controls: {
@@ -110,6 +134,14 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player3'
         },
         player4: {
+            control_names: {
+                forward:"H",
+                backward:"B",
+                left:"G",
+                right:"N",
+                fire1:"-",
+                fire2:"+"
+            },
             initLoc: [750, 600],
             sprite: 'player4',
             controls: {
@@ -123,6 +155,14 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player4'
         },
         player5: {
+            control_names: {
+                forward:"4",
+                backward:"E",
+                left:"3",
+                right:"R",
+                fire1:"F5",
+                fire2:"F6"
+            },
             initLoc: [550, 200],
             sprite: 'player5',
             controls: {
@@ -136,6 +176,14 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player5'
         },
         player6: {
+            control_names: {
+                forward:"8",
+                backward:"U",
+                left:"7",
+                right:"I",
+                fire1:"O",
+                fire2:"P"
+            },
             initLoc: [950, 200],
             sprite: 'player6',
             controls: {
@@ -149,6 +197,14 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player6'
         },
         player7: {
+            control_names: {
+                forward:"F",
+                backward:"C",
+                left:"D",
+                right:"V",
+                fire1:"F7",
+                fire2:"F8"
+            },
             initLoc: [550, 600],
             sprite: 'player7',
             controls: {
@@ -162,6 +218,14 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
             image: 'player7'
         },
         player8: {
+            control_names: {
+                forward:"K",
+                backward:"M",
+                left:"J",
+                right:",",
+                fire1:"(",
+                fire2:")"
+            },
             initLoc: [950, 600],
             sprite: 'player8',
             controls: {
