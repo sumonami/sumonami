@@ -26,10 +26,8 @@ PlayfieldState.prototype.create = function() {
     //  We need arcade physics
     state.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    //  Watery backdrop
-    var water = state.game.add.tileSprite(0, 0, state.game.width, state.game.height, 'water');
-    var ripple = water.animations.add('ripple');
-    water.animations.play('ripple', 6, true);
+    this.createBackground();
+
 
     // Player config
     var players = {
@@ -71,5 +69,13 @@ PlayfieldState.prototype.create = function() {
 PlayfieldState.prototype.update = function() {
     this.game.physics.arcade.collide(this.ships);
 };
+
+PlayfieldState.prototype.createBackground = function() {
+    var state = this;
+    //  Watery backdrop
+    var water = state.game.add.tileSprite(0, 0, state.game.width, state.game.height, 'water');
+    var ripple = water.animations.add('ripple');
+    water.animations.play('ripple', 6, true);
+}
 
 module.exports = PlayfieldState;
