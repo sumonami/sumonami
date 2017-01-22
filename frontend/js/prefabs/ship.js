@@ -24,7 +24,7 @@ var Ship = function(state, playerinfo) {
     // this.body.collideWorldBounds=true;
     // this.body.bounce.y=0.2;
     // this.body.bounce.x=0.2;
-    this.repel_scaling_factor=0.8;
+    // this.repel_scaling_factor=0.8;
     this.repel_max_range=100;
     this.repel_initial_vel=250;
 
@@ -48,11 +48,18 @@ var Ship = function(state, playerinfo) {
     this.bullets = this.game.add.group();
     this.bullets.enableBody = true;
     this.bullets.physicsBodyType = Phaser.Physics.ARCADE;
-    this.bullets.createMultiple(40, 'dog-bullet');
+    this.bullets.createMultiple(2, 'dog-bullet');
     this.bullets.setAll('anchor.x', 0.5);
     this.bullets.setAll('anchor.y', 0.5);
+
+    //Collision stuff
     this.checkWorldBounds = true;
     this.outOfBoundsKill = true;
+    this.body.mass = 100;
+    this.body.bounce.set(1);
+    this.body.stopVelocityOnCollide = true;
+
+    console.log(this.bounce);
 
 };
 
@@ -62,18 +69,23 @@ Ship.prototype.constructor = Ship;
 
 Ship.prototype.update = function() {
     this.speed = 10;
-    if (this.controls.forward.isDown)
-    { this.body.velocity.y -= this.speed; }
-    else if (this.controls.backward.isDown)
-    { this.body.velocity.y += this.speed; }
-    else
+    if (this.controls.forward.isDown) {
+        this.body.velocity.y -= this.speed;
+        this.angle = 180;
+    } else if (this.controls.backward.isDown) {
+        this.body.velocity.y += this.speed;
+        this.angle = 360;
+    } else
     { this.body.acceleration.set(0); }
 
-    if (this.controls.left.isDown)
-    { this.body.velocity.x -= this.speed; }
-    else if (this.controls.right.isDown)
-    { this.body.velocity.x += this.speed; }
-
+    if (this.controls.left.isDown) {
+        this.body.velocity.x -= this.speed;
+        this.angle = 90;
+    }
+    else if (this.controls.right.isDown) {
+        this.body.velocity.x += this.speed;
+        this.angle = 270;
+    }
     this.controls.fire1.onDown.add(this.fireBullet, this);
     this.controls.fire2.onDown.add(this.fireWave, this);
 
@@ -94,10 +106,11 @@ Ship.prototype.fireBullet = function () {
 
             if (this.bullet)
             {
+                this.bullet.scale.setTo(0.3);
                 this.bullet.reset(this.body.x + 16, this.body.y + 16);
                 this.bullet.lifespan = 2000;
-                this.bullet.rotation = this.rotation;
-                this.game.physics.arcade.velocityFromRotation(this.rotation, 400, this.bullet.body.velocity);
+                this.bullet.angle = this.angle + 90;
+                this.game.physics.arcade.velocityFromAngle(this.bullet.angle, 400, this.bullet.body.velocity);
                 this.bulletTime = this.game.time.now + 50;
             }
         }
