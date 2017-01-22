@@ -24,8 +24,8 @@ var Ship = function(state, playerinfo) {
     // this.body.bounce.y=0.2;
     // this.body.bounce.x=0.2;
     // this.repel_scaling_factor=0.8;
-    this.repel_max_range=100;
-    this.repel_initial_vel=250;
+    this.repel_max_range=300;
+    this.repel_initial_vel=350;
 
     // Rate of acceleration on keypress, don't confuse with this.body.acceleration!
     this.acceleration_increment=40;
@@ -94,7 +94,9 @@ Ship.prototype.update = function() {
     var wee = this.bullets.getFirstAlive();
     if (wee) wee.angle += 10;
 
-    this.waves.forEachExists(this.scaleSprite, this, 0.02);
+    this.game.physics.arcade.collide(this.bullets);
+    this.waves.forEachExists(this.scaleSprite, this, 0.05);
+    this.game.debug.body(this);
 };
 
 Ship.prototype.fireBullet = function () {
