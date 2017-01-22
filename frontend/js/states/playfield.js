@@ -27,9 +27,24 @@ PlayfieldState.prototype.create = function() {
     state.game.physics.startSystem(Phaser.Physics.ARCADE);
 
     this.createBackground();
+    this.createPlayers();
 
+};
 
-    // Player config
+PlayfieldState.prototype.update = function() {
+    this.game.physics.arcade.collide(this.ships);
+};
+
+PlayfieldState.prototype.createBackground = function() {
+    var state = this;
+    //  Watery backdrop
+    var water = state.game.add.tileSprite(0, 0, state.game.width, state.game.height, 'water');
+    var ripple = water.animations.add('ripple');
+    water.animations.play('ripple', 6, true);
+};
+
+PlayfieldState.prototype.createPlayers = function() {
+    var state = this;
     var players = {
         player1: {
             initLoc: [100, 100],
@@ -53,29 +68,14 @@ PlayfieldState.prototype.create = function() {
                 fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.O)
             }
         }
-    }
+    };
 
     state.ships = new Ships(state);
     for (var player in players) {
-        console.log(player)
         state.ships.add(new Ship(state, players[player]));
     }
 
     state.game.physics.enable(state.ships, Phaser.Physics.ARCADE);
-
-    console.log(state.ships);
 };
-
-PlayfieldState.prototype.update = function() {
-    this.game.physics.arcade.collide(this.ships);
-};
-
-PlayfieldState.prototype.createBackground = function() {
-    var state = this;
-    //  Watery backdrop
-    var water = state.game.add.tileSprite(0, 0, state.game.width, state.game.height, 'water');
-    var ripple = water.animations.add('ripple');
-    water.animations.play('ripple', 6, true);
-}
 
 module.exports = PlayfieldState;
