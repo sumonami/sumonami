@@ -34,9 +34,9 @@ TitleState.prototype.create = function() {
             .to({ alpha: 1.0  }, 2000, Phaser.Easing.Linear.In)
             .start();
 
-    function sleep(ms) {
-          return new Promise(resolve => setTimeout(resolve, ms));
-    }
+    // function sleep(ms) {
+    //       return new Promise(resolve => setTimeout(resolve, ms));
+    // }
 
     for (var i = 0; i < 100; i++) {
         //await sleep(2000);
@@ -76,7 +76,7 @@ Phaser.Filter.Glow = function (game) {
                     '}',
                     'gl_FragColor = sum * 0.025 + texture2D(uSampler, texcoord);',
                 '}'
-            
+
     ];
 
 };
