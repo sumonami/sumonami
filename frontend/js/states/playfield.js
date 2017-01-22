@@ -47,7 +47,7 @@ PlayfieldState.prototype.createPlayers = function() {
     var state = this;
     var players = {
         player1: {
-            initLoc: [100, 100],
+            initLoc: [350, 400],
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.W),
                 backward: state.game.input.keyboard.addKey(Phaser.Keyboard.S),
@@ -58,7 +58,7 @@ PlayfieldState.prototype.createPlayers = function() {
             }
         },
         player2: {
-            initLoc: [200, 100],
+            initLoc: [550, 400],
             controls: {
                 forward: state.game.input.keyboard.addKey(Phaser.Keyboard.I),
                 backward: state.game.input.keyboard.addKey(Phaser.Keyboard.K),
@@ -66,6 +66,28 @@ PlayfieldState.prototype.createPlayers = function() {
                 right: state.game.input.keyboard.addKey(Phaser.Keyboard.L),
                 fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.U),
                 fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.O)
+            }
+        },
+        player3: {
+            initLoc: [750, 400],
+            controls: {
+                forward: state.game.input.keyboard.addKey(Phaser.Keyboard.T),
+                backward: state.game.input.keyboard.addKey(Phaser.Keyboard.G),
+                left: state.game.input.keyboard.addKey(Phaser.Keyboard.F),
+                right: state.game.input.keyboard.addKey(Phaser.Keyboard.H),
+                fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.R),
+                fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.Y)
+            }
+        },
+        player4: {
+            initLoc: [950, 400],
+            controls: {
+                forward: state.game.input.keyboard.addKey(Phaser.Keyboard.UP),
+                backward: state.game.input.keyboard.addKey(Phaser.Keyboard.DOWN),
+                left: state.game.input.keyboard.addKey(Phaser.Keyboard.LEFT),
+                right: state.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT),
+                fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT),
+                fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.CONTROL)
             }
         }
     };
