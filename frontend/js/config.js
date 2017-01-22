@@ -35,6 +35,14 @@ var CONFIG = {
             boundsAlignH: "center",
             boundsAlignV: "bottom"
         },
+        controlStyle: {
+            font: '48px VT323',
+            fill: '#fff',
+            stroke: '#000',
+            strokeThickness: 1,
+            boundsAlignH: "center",
+            boundsAlignV: "bottom"
+        },
 
         smallStyle: {
             font: '18px VT323',
