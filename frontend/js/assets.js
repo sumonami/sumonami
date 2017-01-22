@@ -55,6 +55,9 @@ var assets = {
         ['sfx-sausagethrow', ['audio/sfx-sausagethrow.mp3',
                               'audio/sfx-sausagethrow.opus']
         ],
+        ['sfx-select', ['audio/sfx-select.mp3',
+                        'audio/sfx-select.opus']
+        ],
         ['sfx-slashsoft', ['audio/sfx-slashsoft.mp3',
                            'audio/sfx-slashsoft.opus']
         ],
@@ -62,10 +65,13 @@ var assets = {
                             'audio/sfx-splashhard.opus']
         ],
         ['sfx-startgame', ['audio/sfx-startgame.mp3',
-                            'audio/sfx-startgame.opus']
+                           'audio/sfx-startgame.opus']
         ],
         ['sfx-washed-last', ['audio/sfx-washed-last.mp3',
                              'audio/sfx-washed-last.opus']
+        ],
+        ['sfx-washed', ['audio/sfx-washed.mp3',
+                        'audio/sfx-washed.opus']
         ],
         ['voice-gameover1', ['audio/voice-gameover1.mp3',
                              'audio/voice-gameover1.opus']

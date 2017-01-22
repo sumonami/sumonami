@@ -10,9 +10,14 @@ var TitleState = function() {};
 
 TitleState.prototype.preload = function() {
     _common.setGameScale(this.game);
+    this.audioBgm = this.game.add.audio('bgm-title');
+    this.audioTitle = this.game.add.audio('voice-sumonami');
+    this.audioSelect = this.game.add.audio('sfx-select');
 };
 
 TitleState.prototype.create = function() {
+    var state = this;
+
     this.bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
     this.text = this.game.add.sprite(0, 0, 'titleText');
     this.text.anchor.set(0.5);
@@ -20,6 +25,9 @@ TitleState.prototype.create = function() {
     this.text.y = this.game.height / 2;
     this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     this.startButton.onDown.add(this.getPlayerCount, this);
+
+    this.audioTitle.play();
+    this.audioBgm.play();
 
     this.subtext = this.game.add.text(0, 0, "CHALLENGER PRESSES SPACEBAH!!", CONFIG.font.bigStyle);
     this.subtext.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
@@ -54,6 +62,9 @@ TitleState.prototype.create = function() {
 
 };
 TitleState.prototype.getPlayerCount = function () {
+
+    this.audioSelect.play();
+
     this.subtext.setText("How many players (2-8)?");
     this.twoButton = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
     this.twoButton.onDown.add(this.setNumPlayers, this, this, 2);
