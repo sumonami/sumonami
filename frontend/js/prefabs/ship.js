@@ -2,7 +2,12 @@
 
 var CONFIG = require('../config');
 
-var Ship = function(state, x, y, controls) {
+var Ship = function(state, playerinfo) {
+    console.log(playerinfo);
+    var x = playerinfo.initLoc[0];
+    var y = playerinfo.initLoc[1];
+    var controls = playerinfo.controls;
+
     // instantiate object
     Phaser.Sprite.call(this, state.game, x, y, 'ship');
     // constants
