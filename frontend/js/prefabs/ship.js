@@ -138,6 +138,11 @@ Ship.prototype.fireWave = function() {
                 this.waveTime = this.game.time.now + 200;
 
                 this.parent.forEachExists(this.repelShip, this);
+                this.game.add.tween(this.scale)
+                    .to({x: 0.8, y:0.8}, 200, Phaser.Easing.Linear.In)
+                    .to({x: 1.2, y:1.2}, 200, Phaser.Easing.Linear.In)
+                    .to({x: 1.0, y:1.0}, 200, Phaser.Easing.Linear.In)
+                    .start();
             }
         }
     }
