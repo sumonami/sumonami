@@ -104,8 +104,8 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
                 backward: state.game.input.keyboard.addKey(Phaser.Keyboard.Z),
                 left: state.game.input.keyboard.addKey(Phaser.Keyboard.A),
                 right: state.game.input.keyboard.addKey(Phaser.Keyboard.X),
-                fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.F3),
-                fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.F4)
+                fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT),
+                fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.CONTROL)
             },
             image: 'player3'
         },
@@ -117,8 +117,8 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
                 backward: state.game.input.keyboard.addKey(Phaser.Keyboard.B),
                 left: state.game.input.keyboard.addKey(Phaser.Keyboard.G),
                 right: state.game.input.keyboard.addKey(Phaser.Keyboard.N),
-                fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.MINUS),
-                fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.PLUS)
+                fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.UNDERSCORE),
+                fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.EQUALS)
             },
             image: 'player4'
         },
