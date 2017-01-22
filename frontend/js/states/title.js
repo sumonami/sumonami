@@ -29,11 +29,14 @@ TitleState.prototype.create = function() {
     this.text.filters = [ this.game.add.filter('Glow')  ];
 
     this.game.add.tween(this.text)
-            .to({ alpha: 1.0  }, 2000, Phaser.Easing.Linear.In)
             .to({ alpha: 0.1  }, 2000, Phaser.Easing.Linear.In)
             .to({ alpha: 1.0  }, 2000, Phaser.Easing.Linear.In)
             .to({ alpha: 0.1  }, 2000, Phaser.Easing.Linear.In)
             .to({ alpha: 1.0  }, 2000, Phaser.Easing.Linear.In)
+            .to({ alpha: 1.0  }, 2000, Phaser.Easing.Linear.In)
+            .to({ alpha: 0.1  }, 2000, Phaser.Easing.Linear.In)
+            .to({ alpha: 1.0  }, 2000, Phaser.Easing.Linear.In)
+            .to({ alpha: 0.1  }, 2000, Phaser.Easing.Linear.In)
             .to({ alpha: 1.0  }, 2000, Phaser.Easing.Linear.In)
             .to({ alpha: 0.1  }, 2000, Phaser.Easing.Linear.In)
             .to({ alpha: 1.0  }, 2000, Phaser.Easing.Linear.In)
