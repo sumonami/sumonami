@@ -17,7 +17,11 @@ TitleState.prototype.create = function() {
     this.bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
     this.text = this.game.add.sprite(0, 0, 'titleText');
     this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-    this.startButton.onDown.add(this.startGame, this);
+    this.startButton.onDown.add(this.getPlayerCount, this);
+
+    this.subtext = this.game.add.text(0, 0, "CHALLENGER PRESSES START!!", CONFIG.font.bigStyle);
+    this.subtext.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    this.subtext.setTextBounds(0,0,this.game.width,(this.game.height-40));
 
     this.text.filters = [ this.game.add.filter('Glow')  ];
 
@@ -38,11 +42,38 @@ TitleState.prototype.create = function() {
     //       return new Promise(resolve => setTimeout(resolve, ms));
     // }
 
-    for (var i = 0; i < 100; i++) {
-        //await sleep(2000);
-        //this.text.body.x = i;
-    }
+    // for (var i = 0; i < 100; i++) {
+    //     //await sleep(2000);
+    //     //this.text.body.x = i;
+    // }
 
+};
+TitleState.prototype.getPlayerCount = function () {
+    this.subtext.setText("How many players?");
+    this.oneButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
+    this.oneButton.onDown.add(this.setNumPlayers, this, 1);
+    this.twoButton = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
+    this.twoButton.onDown.add(this.setNumPlayers, this, 2);
+    this.threeButton = this.game.input.keyboard.addKey(Phaser.Keyboard.THREE);
+    this.threeButton.onDown.add(this.setNumPlayers, this, 3);
+    this.fourButton = this.game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
+    this.fourButton.onDown.add(this.setNumPlayers, this, 4);
+    this.fiveButton = this.game.input.keyboard.addKey(Phaser.Keyboard.FIVE);
+    this.fiveButton.onDown.add(this.setNumPlayers, this, 5);
+    this.sixButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SIX);
+    this.sixButton.onDown.add(this.setNumPlayers, this, 6);
+    this.sevenButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
+    this.sevenButton.onDown.add(this.setNumPlayers, this, 7);
+    this.eightButton = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
+    this.eightButton.onDown.add(this.setNumPlayers, this, 8);
+};
+
+TitleState.prototype.setNumPlayers = function (state, number) {
+    console.log('setting!');
+    console.log(state);
+    console.log(number);
+    this.numPlayers = number;
+    this.state.start("PlayField");
 };
 
 TitleState.prototype.startGame = function () {
