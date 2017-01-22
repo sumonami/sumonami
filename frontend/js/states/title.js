@@ -75,7 +75,43 @@ TitleState.prototype.getPlayerCount = function () {
 
 TitleState.prototype.setNumPlayers = function (state, number) {
     console.log("setNumPlayers:"+number+" pressed!");
-    this.state.start("PlayField", true, false, number);
+    var  initTotals= {
+        player1: {
+            wins: 0,
+            sausages: 0,
+        },
+        player2: {
+            wins: 0,
+            sausages: 0,
+        },
+        player3: {
+            wins: 0,
+            sausages: 0,
+        },
+        player4: {
+            wins: 0,
+            sausages: 0,
+        },
+        player5: {
+            wins: 0,
+            sausages: 0,
+        },
+        player6: {
+            wins: 0,
+            sausages: 0,
+        },
+        player7: {
+            wins: 0,
+            sausages: 0,
+        },
+        player8: {
+            wins: 0,
+            sausages: 0,
+        }
+    };
+
+
+    this.state.start("PlayField", true, false, number, initTotals);
 };
 
 Phaser.Filter.Glow = function (game) {

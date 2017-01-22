@@ -15,17 +15,16 @@ PlayfieldState.prototype.preload = function() {
     console.log("PLAY FIELD PRELOAD");
 };
 
-PlayfieldState.prototype.init = function(numPlayers) {
-    this.numPlayers = numPlayers;
-    _common.setGameScale(this.game);
-    console.log(this);
+PlayfieldState.prototype.init = function(numPlayers, curScores) {
     console.log("PLAY FIELD INIT");
+    this.numPlayers = numPlayers;
+    this.curScores = curScores;
+    _common.setGameScale(this.game);
 };
 
 
 PlayfieldState.prototype.create = function(game) {
     console.log("PLAY FIELD, numPlayers: "+this.numPlayers);
-
     var state = this;
 
     //  This will run in Canvas mode, so let's gain a little speed and display
@@ -42,7 +41,16 @@ PlayfieldState.prototype.create = function(game) {
 
 PlayfieldState.prototype.endRound= function() {
     console.log("Round over!");
-    this.game.state.start("EndState", true, false);
+    for (var i = 0; i < this.ships.children.length; i++) {
+        var checkShip = this.ships.children[i];
+        if (checkShip.alive) {
+            console.log("player "+ i + " won!");
+            this.curScores["player"+i]["wins"] += 1;
+        }
+    }
+
+    this.game.state.start("EndState", true, false, this.curScores);
+
 };
 
 PlayfieldState.prototype.update = function() {

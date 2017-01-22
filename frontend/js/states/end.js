@@ -8,6 +8,12 @@ var _common = require('./_common');
 
 var EndState = function() {};
 
+EndState.prototype.init = function(scores) {
+    console.log("END INIT");
+    this.scores = scores;
+    console.log(scores);
+}
+
 EndState.prototype.preload = function() {
     _common.setGameScale(this.game);
 };
