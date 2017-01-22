@@ -27,7 +27,7 @@ EndState.prototype.new_round = function() {
 
 EndState.prototype.restart = function(state, numPlayers) {
 
-    this.state.start("title", true, true );
+    this.state.start("TitleState", true, false );
 
 };
 
