@@ -54,7 +54,7 @@ TitleState.prototype.create = function() {
 
 };
 TitleState.prototype.getPlayerCount = function () {
-    this.subtext.setText("How many players (1-8)?");
+    this.subtext.setText("How many players (1-4)?");
     this.oneButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
     this.oneButton.onDown.add(this.setNumPlayers, this, this, 1);
     this.twoButton = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);

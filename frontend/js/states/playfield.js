@@ -35,7 +35,7 @@ PlayfieldState.prototype.create = function(game) {
     state.game.physics.startSystem(Phaser.Physics.ARCADE);
 
     this.createBackground();
-    this.createPlayers();
+    this.createPlayers(state.numPlayers);
 
 };
 
@@ -68,7 +68,7 @@ PlayfieldState.prototype.createBackground = function() {
     water.animations.play('ripple', 6, true);
 };
 
-PlayfieldState.prototype.createPlayers = function() {
+PlayfieldState.prototype.createPlayers = function(numPlayers) {
     var state = this;
     var players = {
         player1: {
@@ -126,8 +126,10 @@ PlayfieldState.prototype.createPlayers = function() {
     };
 
     state.ships = new Ships(state);
-    for (var player in players) {
-        state.ships.add(new Ship(state, players[player]));
+    if (numPlayers > 4) numPlayers == 4;
+    for (var i = 1; i < numPlayers; i++) {
+        state.ships.add(new Ship(state, players["player" + i]));
+        console.log("player" + i + "created");
     }
 
     state.game.physics.enable(state.ships, Phaser.Physics.ARCADE);
