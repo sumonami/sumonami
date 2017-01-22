@@ -14,9 +14,8 @@ TitleState.prototype.preload = function() {
 };
 
 TitleState.prototype.create = function() {
-    // var bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
-    var title = this.game.add.sprite(0, 0, this.game.width, this.game.height, 'titleText');
-
+    var bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
+    var title = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleText');
 }
 
 module.exports = TitleState;
