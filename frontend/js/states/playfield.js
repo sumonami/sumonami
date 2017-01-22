@@ -80,7 +80,8 @@ PlayfieldState.prototype.createPlayers = function() {
                 right: state.game.input.keyboard.addKey(Phaser.Keyboard.D),
                 fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.Q),
                 fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.E)
-            }
+            },
+            image: 'player1'
         },
         player2: {
             initLoc: [550, 400],
@@ -91,7 +92,8 @@ PlayfieldState.prototype.createPlayers = function() {
                 right: state.game.input.keyboard.addKey(Phaser.Keyboard.L),
                 fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.U),
                 fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.O)
-            }
+            },
+            image: 'player2'
         },
         player3: {
             initLoc: [750, 400],
@@ -102,7 +104,8 @@ PlayfieldState.prototype.createPlayers = function() {
                 right: state.game.input.keyboard.addKey(Phaser.Keyboard.H),
                 fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.R),
                 fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.Y)
-            }
+            },
+            image: 'player3'
         },
         player4: {
             initLoc: [950, 400],
@@ -113,7 +116,8 @@ PlayfieldState.prototype.createPlayers = function() {
                 right: state.game.input.keyboard.addKey(Phaser.Keyboard.RIGHT),
                 fire1: state.game.input.keyboard.addKey(Phaser.Keyboard.SHIFT),
                 fire2: state.game.input.keyboard.addKey(Phaser.Keyboard.CONTROL)
-            }
+            },
+            image: 'player4'
         }
     };
 

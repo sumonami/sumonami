@@ -17,7 +17,14 @@ var assets = {
     // images are standard image files.
     // Format is [key, path]
     images: [
-        ['ship', 'images/player1.png'],
+        ['player1', 'images/player1.png'],
+        ['player2', 'images/player2.png'],
+        ['player3', 'images/player3.png'],
+        ['player4', 'images/player4.png'],
+        ['player5', 'images/player5.png'],
+        ['player6', 'images/player6.png'],
+        ['player7', 'images/player7.png'],
+        ['player8', 'images/player8.png'],
         ['bullet', 'images/bullet1.png'],
         ['dog-bullet', 'images/dog-bullet.png'],
         ['space', 'images/deepblue.png'],

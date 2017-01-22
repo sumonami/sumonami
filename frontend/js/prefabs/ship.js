@@ -6,9 +6,10 @@ var Ship = function(state, playerinfo) {
     var x = playerinfo.initLoc[0];
     var y = playerinfo.initLoc[1];
     var controls = playerinfo.controls;
+    var image = playerinfo.image;
 
     // instantiate object
-    Phaser.Sprite.call(this, state.game, x, y, 'ship');
+    Phaser.Sprite.call(this, state.game, x, y, image);
     // constants
     this.x = x;
     this.y = y;
@@ -94,9 +95,7 @@ Ship.prototype.update = function() {
     var wee = this.bullets.getFirstAlive();
     if (wee) wee.angle += 10;
 
-    this.game.physics.arcade.collide(this.bullets);
     this.waves.forEachExists(this.scaleSprite, this, 0.05);
-    this.game.debug.body(this);
 };
 
 Ship.prototype.fireBullet = function () {
