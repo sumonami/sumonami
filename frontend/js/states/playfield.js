@@ -12,10 +12,19 @@ var PlayfieldState = function() {
 
 PlayfieldState.prototype.preload = function() {
     _common.setGameScale(this.game);
+    console.log("PLAY FIELD PRELOAD");
 };
 
-PlayfieldState.prototype.create = function() {
-    console.log('PLAY FIELD');
+PlayfieldState.prototype.init = function(numPlayers) {
+    this.numPlayers = numPlayers;
+    _common.setGameScale(this.game);
+    console.log(this);
+    console.log("PLAY FIELD INIT");
+};
+
+
+PlayfieldState.prototype.create = function(game) {
+    console.log("PLAY FIELD, numPlayers: "+this.numPlayers);
 
     var state = this;
 

@@ -3,7 +3,6 @@
  * State for the game title screen.
 **/
 'use strict';
-
 var CONFIG = require('../config');
 var _common = require('./_common');
 
@@ -55,36 +54,28 @@ TitleState.prototype.create = function() {
 
 };
 TitleState.prototype.getPlayerCount = function () {
-    this.subtext.setText("How many players?");
+    this.subtext.setText("How many players (1-8)?");
     this.oneButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ONE);
-    this.oneButton.onDown.add(this.setNumPlayers, this, 1);
+    this.oneButton.onDown.add(this.setNumPlayers, this, this, 1);
     this.twoButton = this.game.input.keyboard.addKey(Phaser.Keyboard.TWO);
-    this.twoButton.onDown.add(this.setNumPlayers, this, 2);
+    this.twoButton.onDown.add(this.setNumPlayers, this, this, 2);
     this.threeButton = this.game.input.keyboard.addKey(Phaser.Keyboard.THREE);
-    this.threeButton.onDown.add(this.setNumPlayers, this, 3);
+    this.threeButton.onDown.add(this.setNumPlayers, this, this, 3);
     this.fourButton = this.game.input.keyboard.addKey(Phaser.Keyboard.FOUR);
-    this.fourButton.onDown.add(this.setNumPlayers, this, 4);
+    this.fourButton.onDown.add(this.setNumPlayers, this, this, 4);
     this.fiveButton = this.game.input.keyboard.addKey(Phaser.Keyboard.FIVE);
-    this.fiveButton.onDown.add(this.setNumPlayers, this, 5);
+    this.fiveButton.onDown.add(this.setNumPlayers, this, this, 5);
     this.sixButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SIX);
-    this.sixButton.onDown.add(this.setNumPlayers, this, 6);
+    this.sixButton.onDown.add(this.setNumPlayers, this, this, 6);
     this.sevenButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SEVEN);
-    this.sevenButton.onDown.add(this.setNumPlayers, this, 7);
+    this.sevenButton.onDown.add(this.setNumPlayers, this, this, 7);
     this.eightButton = this.game.input.keyboard.addKey(Phaser.Keyboard.EIGHT);
-    this.eightButton.onDown.add(this.setNumPlayers, this, 8);
+    this.eightButton.onDown.add(this.setNumPlayers, this, this, 8);
 };
 
 TitleState.prototype.setNumPlayers = function (state, number) {
-    console.log('setting!');
-    console.log(state);
-    console.log(number);
-    this.numPlayers = number;
-    this.state.start("PlayField");
-};
-
-TitleState.prototype.startGame = function () {
-    console.log("starting!");
-    this.state.start("PlayField");
+    console.log("setNumPlayers:"+number+" pressed!");
+    this.state.start("PlayField", true, false, number);
 };
 
 Phaser.Filter.Glow = function (game) {

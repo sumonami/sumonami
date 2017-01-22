@@ -3,7 +3,6 @@
 var CONFIG = require('../config');
 
 var Ship = function(state, playerinfo) {
-    console.log(playerinfo);
     var x = playerinfo.initLoc[0];
     var y = playerinfo.initLoc[1];
     var controls = playerinfo.controls;
