@@ -14,10 +14,19 @@ TitleState.prototype.preload = function() {
 };
 
 TitleState.prototype.create = function() {
-    var bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
-    var title = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleText');
+    this.bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
+    this.text = this.game.add.sprite(0, 0, 'titleText');
     this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     this.startButton.onDown.add(this.startGame, this);
+
+    function sleep(ms) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    for (var i = 0; i < 100; i++) {
+        //await sleep(2000);
+        this.text.body.x = i;
+    }
 
 }
 
