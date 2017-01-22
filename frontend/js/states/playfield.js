@@ -127,7 +127,7 @@ PlayfieldState.prototype.createPlayers = function(numPlayers) {
 
     state.ships = new Ships(state);
     if (numPlayers > 4) numPlayers == 4;
-    for (var i = 1; i < numPlayers; i++) {
+    for (var i = 1; i <= numPlayers; i++) {
         state.ships.add(new Ship(state, players["player" + i]));
         console.log("player" + i + "created");
     }
