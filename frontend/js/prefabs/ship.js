@@ -17,11 +17,11 @@ var Ship = function(state, x, y, controls) {
     this.body.drag.set(100);
     this.body.maxVelocity.set(800);
     this.body.collideWorldBounds=true;
-    this.body.bounce.y=0.2;
-    this.body.bounce.x=0.2;
-    this.repel_scaling_factor=0.5;
+    // this.body.bounce.y=0.2;
+    // this.body.bounce.x=0.2;
+    this.repel_scaling_factor=0.8;
     this.repel_max_range=100;
-    this.repel_initial_vel=100;
+    this.repel_initial_vel=250;
 
     // Rate of acceleration on keypress, don't confuse with this.body.acceleration!
     this.acceleration_increment=40;
@@ -126,7 +126,7 @@ Ship.prototype.repelShip = function (ship) {
     var dist = this.game.physics.arcade.distanceBetween(ship, this);
     var ang = this.game.physics.arcade.angleBetween(ship, this);
 
-    if (dist < this.repel_max_range)
+    if (dist < this.repel_max_range && dist != 0)
     {
         var scaling_factor = ( (this.repel_max_range - dist) / this.repel_max_range);
         console.log("dist:"+dist+", factor:"+scaling_factor+", scaled:"+scaled_velocity);
@@ -135,7 +135,7 @@ Ship.prototype.repelShip = function (ship) {
         ship.game.physics.arcade.velocityFromRotation(ang, scaled_velocity, ship.body.velocity);
     }
     else {
-        console.log("out of range!")
+        console.log("out of range!");
     }
 };
 
