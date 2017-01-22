@@ -40,8 +40,16 @@ PlayfieldState.prototype.create = function(game) {
 
 };
 
+PlayfieldState.prototype.endRound= function() {
+    console.log("Round over!");
+    this.game.state.start("EndState", true, false);
+};
+
 PlayfieldState.prototype.update = function() {
     this.game.physics.arcade.collide(this.ships);
+    if (this.ships.countLiving() == 1 ) {
+        this.endRound();
+    }
 };
 
 PlayfieldState.prototype.createBackground = function() {
