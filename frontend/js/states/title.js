@@ -21,7 +21,7 @@ TitleState.prototype.create = function() {
     this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     this.startButton.onDown.add(this.getPlayerCount, this);
 
-    this.subtext = this.game.add.text(0, 0, "CHALLENGER PRESSES START!!", CONFIG.font.bigStyle);
+    this.subtext = this.game.add.text(0, 0, "CHALLENGER PRESSES SPACEBAH!!", CONFIG.font.bigStyle);
     this.subtext.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
     this.subtext.setTextBounds(0,0,this.game.width,(this.game.height-40));
 

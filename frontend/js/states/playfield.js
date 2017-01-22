@@ -49,7 +49,7 @@ PlayfieldState.prototype.endRound= function() {
         }
     }
 
-    this.game.state.start("EndState", true, false, this.curScores);
+    this.game.state.start("EndState", true, false, this.numPlayers, this.curScores);
 
 };
 
