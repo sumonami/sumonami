@@ -8,11 +8,20 @@ var Ships = require('../prefabs/ships');
 
 
 var PlayfieldState = function() {
+    this.roundEnded = false;
 };
 
 PlayfieldState.prototype.preload = function() {
     _common.setGameScale(this.game);
-    console.log("PLAY FIELD PRELOAD");
+    this.audioPlayBgm = this.game.add.audio('bgm-playfield');
+    this.audioPlayBgm.loopFull();
+    this.audioBounce = this.game.add.audio('sfx-bounce');
+    this.audioSausageHit = this.game.add.audio('sfx-sausagehit');
+    this.audioSausageThrow = this.game.add.audio('sfx-sausagethrow');
+    this.audioSplashSoft = this.game.add.audio('sfx-slashsoft');
+    this.audioSplashHard = this.game.add.audio('sfx-splashhard');
+    this.audioWashedLast = this.game.add.audio('sfx-washed-last');
+    this.audioWashed = this.game.add.audio('sfx-washed');
 };
 
 PlayfieldState.prototype.init = function(numPlayers, curScores) {
@@ -24,6 +33,7 @@ PlayfieldState.prototype.init = function(numPlayers, curScores) {
 
 
 PlayfieldState.prototype.create = function(game) {
+    this.audioPlayBgm.fadeIn(2000);
     console.log("PLAY FIELD, numPlayers: "+this.numPlayers);
     var state = this;
 
@@ -39,7 +49,10 @@ PlayfieldState.prototype.create = function(game) {
 
 };
 
-PlayfieldState.prototype.endRound= function() {
+PlayfieldState.prototype.endRound = function() {
+    this.roundEnded = true;
+    this.audioPlayBgm.fadeOut(1800);
+    this.audioWashedLast.play();
     console.log("Round over!");
     for (var i = 1; i <= this.ships.children.length; i++) {
         var checkShip = this.ships.children[(i - 1)];
@@ -48,14 +61,20 @@ PlayfieldState.prototype.endRound= function() {
             this.curScores["player"+i]["wins"] += 1;
         }
     }
-    this.game.state.start("EndState", true, false, this.numPlayers, this.curScores);
+    var self = this;
+    this.game.time.events.add(Phaser.Timer.SECOND * 2, function() {
+        self.game.state.start("EndState", true, false, self.numPlayers, self.curScores);
+    });
 
 };
 
 PlayfieldState.prototype.update = function() {
-    this.game.physics.arcade.collide(this.ships);
-    if (this.ships.countLiving() == 1 ) {
-        this.endRound();
+    var self = this;
+    self.game.physics.arcade.collide(self.ships);
+    if (!self.roundEnded) {
+        if (self.ships.countLiving() == 1 ) {
+            self.endRound();
+        }
     }
 };
 

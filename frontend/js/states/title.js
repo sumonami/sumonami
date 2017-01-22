@@ -13,6 +13,7 @@ TitleState.prototype.preload = function() {
     this.audioBgm = this.game.add.audio('bgm-title');
     this.audioTitle = this.game.add.audio('voice-sumonami');
     this.audioSelect = this.game.add.audio('sfx-select');
+    this.audioStart = this.game.add.audio('sfx-startgame');
 };
 
 TitleState.prototype.create = function() {
@@ -119,8 +120,12 @@ TitleState.prototype.setNumPlayers = function (state, number) {
         }
     };
 
-
-    this.state.start("PlayField", true, false, number, initTotals);
+    this.audioBgm.stop();
+    this.audioStart.play();
+    var self = this;
+    this.game.time.events.add(Phaser.Timer.SECOND * 2, function() {
+        self.state.start("PlayField", true, false, number, initTotals);
+    });
 };
 
 Phaser.Filter.Glow = function (game) {
