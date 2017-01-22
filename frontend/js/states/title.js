@@ -16,6 +16,9 @@ TitleState.prototype.preload = function() {
 TitleState.prototype.create = function() {
     this.bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
     this.text = this.game.add.sprite(0, 0, 'titleText');
+    this.text.anchor.set(0.5);
+    this.text.x = this.game.width / 2;
+    this.text.y = this.game.height / 2;
     this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     this.startButton.onDown.add(this.getPlayerCount, this);
 
