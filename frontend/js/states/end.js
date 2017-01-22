@@ -18,6 +18,7 @@ EndState.prototype.init = function(numPlayers, scores) {
 
 EndState.prototype.preload = function() {
     _common.setGameScale(this.game);
+    this.audioApplauseBgm = this.game.add.audio('bgm-applause');
 };
 EndState.prototype.new_round = function() {
     console.log("NEW ROUND");
@@ -32,6 +33,7 @@ EndState.prototype.restart = function(state, numPlayers) {
 };
 
 EndState.prototype.create = function() {
+    this.audioApplauseBgm.play();
     this.bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
     // this.text = this.game.add.sprite(0, 0, 'titleText');
     // this.text.anchor.set(0.5);
