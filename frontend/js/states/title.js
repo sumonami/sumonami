@@ -16,9 +16,14 @@ TitleState.prototype.preload = function() {
 TitleState.prototype.create = function() {
     var bg = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleBackground');
     var title = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, 'titleText');
+    this.startButton = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.startButton.onDown.add(this.startGame, this);
+
+}
+
+TitleState.prototype.startGame = function () {
+    console.log("starting!");
+    this.state.start("PlayField");
 }
 
 module.exports = TitleState;
-TitleState.prototype.update = function() {
-
-}
