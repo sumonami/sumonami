@@ -12,5 +12,3 @@ server:
         - ./static:/opt/www
     ports:
         - 0.0.0.0:8080:8080
-        - eno1:17849:8080
-
