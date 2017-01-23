@@ -1,8 +1,8 @@
 frontend:
     image: node:7
     volumes:
-        - ./frontend:/src
-        - ./static:/static
+        - ./frontend:/src:rprivate
+        - ./static:/static:rprivate
         - /src/node_modules
     working_dir: /src
     command: make build
