@@ -18,18 +18,29 @@ module.exports = {
         filename: '[name].bundle.js'
     },
     plugins: [
+        new webpack.LoaderOptionsPlugin({
+            minimize: true,
+            debug: false
+        }),
         new webpack.optimize.UglifyJsPlugin({
-            minimize: false,
             compress: {
-                drop_console: false
+                drop_console: true,
+                conditionals: true,
+                unused: true,
+                comparisons: true,
+                sequences: true,
+                dead_code: true,
+                evaluate: true,
+                if_return: true,
+                join_vars: true
             }
         })
     ],
     module: {
-        loaders: [
-            { test: /pixi\.js/, loader: 'expose?PIXI' },
-            { test: /phaser-split\.js$/, loader: 'expose?Phaser' },
-            { test: /p2\.js/, loader: 'expose?p2' }
+        rules: [
+            { test: /pixi\.js/, use: ['expose-loader?PIXI'] },
+            { test: /phaser-split\.js$/, use: ['expose-loader?Phaser'] },
+            { test: /p2\.js/, use: ['expose-loader?p2'] }
         ]
     },
     resolve: {
