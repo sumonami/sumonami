@@ -7,8 +7,8 @@ frontend:
     working_dir: /src
     command: make watch
 server:
-    image: webratio/nodejs-http-server:0.9.0
+    build: server
     volumes:
-        - ./static:/opt/www
+        - ./static:/srv
     ports:
-        - 0.0.0.0:8080:8080
+        - 0.0.0.0:8080:80

@@ -1,5 +1,8 @@
 'use strict';
 
+var PIXI = require('pixi');
+var Phaser = require('phaser');
+
 /**
  * main.js
 **/

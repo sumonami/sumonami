@@ -14,14 +14,7 @@ var PlayfieldState = function() {
 PlayfieldState.prototype.preload = function() {
     _common.setGameScale(this.game);
     this.audioPlayBgm = this.game.add.audio('bgm-playfield');
-    this.audioPlayBgm.loopFull();
-    this.audioBounce = this.game.add.audio('sfx-bounce');
-    this.audioSausageHit = this.game.add.audio('sfx-sausagehit');
-    this.audioSausageThrow = this.game.add.audio('sfx-sausagethrow');
-    this.audioSplashSoft = this.game.add.audio('sfx-slashsoft');
-    this.audioSplashHard = this.game.add.audio('sfx-splashhard');
     this.audioWashedLast = this.game.add.audio('sfx-washed-last');
-    this.audioWashed = this.game.add.audio('sfx-washed');
 };
 
 PlayfieldState.prototype.init = function(numPlayers, curScores) {
@@ -35,6 +28,7 @@ PlayfieldState.prototype.init = function(numPlayers, curScores) {
 
 PlayfieldState.prototype.create = function(game) {
     this.audioPlayBgm.fadeIn(2000);
+    this.audioPlayBgm.loopFull();
     console.log("PLAY FIELD, numPlayers: "+this.numPlayers);
     var state = this;
 
